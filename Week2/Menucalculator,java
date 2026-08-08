@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class MenuCalculator {
+
+    static void printMenu() {
+
+        System.out.println("\n----- Calculator Menu -----");
+        System.out.println("1. Add");
+        System.out.println("2. Subtract");
+        System.out.println("3. Multiply");
+        System.out.println("4. Divide");
+        System.out.println("0. Exit");
+    }
+
+    static int readChoice(Scanner input) {
+
+        System.out.print("Enter your choice: ");
+        return input.nextInt();
+    }
+
+    static double calculate(int choice, double num1, double num2) {
+
+        switch (choice) {
+
+            case 1:
+                return num1 + num2;
+
+            case 2:
+                return num1 - num2;
+
+            case 3:
+                return num1 * num2;
+
+            case 4:
+                return num1 / num2;
+
+            default:
+                return 0;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int choice;
+
+        do {
+
+            printMenu();
+
+            choice = readChoice(input);
+
+            if (choice >= 1 && choice <= 4) {
+
+                System.out.print("Enter first number: ");
+                double num1 = input.nextDouble();
+
+                System.out.print("Enter second number: ");
+                double num2 = input.nextDouble();
+
+                if (choice == 4 && num2 == 0) {
+                    System.out.println("Cannot divide by zero.");
+                } else {
+                    double result = calculate(choice, num1, num2);
+                    System.out.println("Result = " + result);
+                }
+
+            } else if (choice == 0) {
+
+                System.out.println("Exiting calculator...");
+
+            } else {
+
+                System.out.println("Invalid choice.");
+
+            }
+
+        } while (choice != 0);
+
+        input.close();
+    }
+}
