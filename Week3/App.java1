@@ -1,0 +1,213 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size of array: ");
+        int size = sc.nextInt();
+
+        int[] arr = new int[size];
+
+        System.out.println("Enter elements:");
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        if (arr.length == 0) {
+            System.out.println("Array is empty.");
+        }
+        else {
+            System.out.println("Sum = " + ArrayStatistics.sum(arr));
+            System.out.println("Average = " + ArrayStatistics.average(arr));
+            System.out.println("Minimum = " + ArrayStatistics.minimum(arr));
+            System.out.println("Maximum = " + ArrayStatistics.maximum(arr));
+            System.out.println("Even count = " + ArrayStatistics.countEven(arr));
+
+            int odd = arr.length - ArrayStatistics.countEven(arr);
+            System.out.println("Odd count = " + odd);
+
+            ArrayStatistics.printSignCounts(arr);
+        }
+
+        System.out.println("Enter elements:");
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter target: ");
+        int target = sc.nextInt();
+
+        System.out.println();
+
+        System.out.println(
+            "Contains = " +
+            LinearSearchToolkit.contains(arr, target)
+        );
+
+        System.out.println(
+            "First index = " +
+            LinearSearchToolkit.firstIndexOf(arr, target)
+        );
+
+        System.out.println(
+            "Last index = " +
+            LinearSearchToolkit.lastIndexOf(arr, target)
+        );
+
+        System.out.println(
+            "Count occurrences = " +
+            LinearSearchToolkit.countOccurrences(arr, target)
+        );
+
+
+        ArrayTransformations.reverseInPlace(arr);
+
+        System.out.println("Reversed in place: "
+                + Arrays.toString(arr));
+
+        int[] original = {1, 2, 3, 4, 5};
+
+        int[] copy = ArrayTransformations.reversedCopy(original);
+
+        System.out.println("Original: "
+                + Arrays.toString(original));
+
+        System.out.println("Reversed copy: "
+                + Arrays.toString(copy));
+
+        int[] values = {2, 5, 2, 7, 2, 9};
+
+        int logicalLength =
+                ArrayTransformations.removeValue(values, 2);
+
+        System.out.println("Logical length = "
+                + logicalLength);
+
+        System.out.println("Meaningful part: "
+                + Arrays.toString(
+                    Arrays.copyOf(values, logicalLength)
+                  ));
+
+        int[] nums = {1, 2, 3, 4};
+
+        int[] running =
+                ArrayTransformations.runningSum(nums);
+
+        System.out.println("Running sum: "
+                + Arrays.toString(running));
+
+            
+
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6}
+        };
+
+        System.out.println("Row sums:");
+        int[] rows = MatrixOperations.rowSums(matrix);
+
+        for (int x : rows) {
+            System.out.print(x + " ");
+        }
+
+        System.out.println();
+
+        System.out.println("Column sums:");
+        int[] columns =
+                MatrixOperations.columnSums(matrix);
+
+        for (int x : columns) {
+            System.out.print(x + " ");
+        }
+
+        System.out.println();
+
+        System.out.println("Transpose:");
+
+        int[][] transposed =
+                MatrixOperations.transpose(matrix);
+
+        MatrixOperations.printMatrix(transposed);
+
+        int[][] first = {
+            {1, 2},
+            {3, 4}
+        };
+
+        int[][] second = {
+            {5, 6},
+            {7, 8}
+        };
+
+        System.out.println("Addition:");
+
+        int[][] added =
+                MatrixOperations.add(first, second);
+
+        MatrixOperations.printMatrix(added);
+
+        System.out.println("Multiplication:");
+
+        int[][] multiplied =
+                MatrixOperations.multiply(first, second);
+
+        MatrixOperations.printMatrix(multiplied);
+
+
+        String[] operations = {
+            "--X", "X++", "X++"
+        };
+
+        System.out.println(
+            "LC 2011 = " +
+            ArrayConstructionProblems
+                .finalValueAfterOperations(operations)
+        );
+
+
+        int[] nums1 = {0, 2, 1, 5, 3, 4};
+
+        System.out.println(
+            "LC 1920 = " +
+            Arrays.toString(
+                ArrayConstructionProblems
+                    .buildArray(nums1)
+            )
+        );
+
+
+        int[] nums2 = {1, 2, 1};
+
+        System.out.println(
+            "LC 1929 = " +
+            Arrays.toString(
+                ArrayConstructionProblems
+                    .getConcatenation(nums2)
+            )
+        );
+
+
+        int[] nums3 = {1, 2, 3, 4};
+
+        System.out.println(
+            "LC 1480 = " +
+            Arrays.toString(
+                ArrayConstructionProblems
+                    .runningSum(nums3)
+            )
+        );
+    }
+}
+    
+
+    
+
+    
+
+    
